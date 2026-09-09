@@ -214,34 +214,41 @@ function initVideoModal() {
 
   if (!modalOverlay || !closeBtn || !modalVideoContainer) return;
 
-  const openModal = (videoTitle) => {
+  const openModal = (videoTitle, videoId = 'NWuDF6AIxEI') => {
     modalVideoContainer.innerHTML = `
-      <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; color:#fff; padding:2rem; text-align:center; background: #0D1117;">
-        <span class="material-symbols-outlined" style="font-size:64px; color:#EE4D2D; margin-bottom:1rem;">smart_display</span>
-        <h3 style="font-size:1.4rem; font-weight:700; margin-bottom:0.5rem; color:#fff;">${videoTitle || 'Studi Kasus & Pembuktian Affiliate'}</h3>
-        <p style="color:#dfe2eb; max-width:480px; font-size:0.95rem; margin-bottom:1.5rem;">
-          Preview materi & studi kasus live komisi harian Shopee Affiliate tanpa modal dan tanpa tampil wajah.
-        </p>
-        <a href="#paket-belajar" onclick="document.getElementById('video-modal').classList.remove('active');" class="btn-pill-primary" style="background:#b22204; padding:0.75rem 2rem;">
-          Daftar Sekarang & Akses Video Penuh
-        </a>
-      </div>
+      <iframe
+        src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0"
+        title="${videoTitle || 'Video pembuktian Affiliate by Anisa'}"
+        style="width:100%; height:100%; border:0;"
+        allow="autoplay; encrypted-media; picture-in-picture"
+        allowfullscreen>
+      </iframe>
     `;
     modalOverlay.classList.add('active');
+    modalOverlay.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
   };
 
   const closeModal = () => {
     modalOverlay.classList.remove('active');
+    modalOverlay.setAttribute('aria-hidden', 'true');
     modalVideoContainer.innerHTML = '';
     document.body.style.overflow = '';
   };
 
   openButtons.forEach(btn => {
-    btn.addEventListener('click', (e) => {
+    const handleOpen = (e) => {
       e.preventDefault();
       const title = btn.getAttribute('data-video-title');
-      openModal(title);
+      const videoId = btn.getAttribute('data-video-id') || 'NWuDF6AIxEI';
+      openModal(title, videoId);
+    };
+
+    btn.addEventListener('click', handleOpen);
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        handleOpen(e);
+      }
     });
   });
 
@@ -264,7 +271,7 @@ function initVideoModal() {
    7. DIRECT WHATSAPP ORDER / INQUIRY LINK GENERATOR
    -------------------------------------------------------------------------- */
 function initWhatsAppButtons() {
-  const waPhone = '6281234567890'; // Ganti dengan nomor WhatsApp aktif admin
+  const waPhone = '6285742001335';
 
   const waButtons = document.querySelectorAll('[data-wa-package]');
   waButtons.forEach(btn => {

@@ -366,6 +366,39 @@ button {
   padding-bottom: 4.5rem;
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+main > #hero {
+  order: 1;
+}
+
+main > #bank-konten {
+  order: 2;
+}
+
+main > #sistem-kerja {
+  order: 3;
+}
+
+main > #hasil-alumni {
+  order: 4;
+}
+
+main > #paket-belajar {
+  order: 5;
+}
+
+main > #faq {
+  order: 6;
+}
+
+main > #daftar-sekarang {
+  order: 7;
+}
+
 .section-header {
   margin-bottom: 2.5rem;
 }
@@ -733,7 +766,7 @@ button {
 /* --- SECTION 2: PROGRAM KELAS BENEFIT CARDS --- */
 .grid-asymmetric-hero {
   display: grid;
-  grid-template-columns: 5fr 7fr;
+  grid-template-columns: 1fr;
   gap: 2.5rem;
   align-items: center;
 }
@@ -836,6 +869,16 @@ button {
   align-items: flex-start;
   transition: var(--transition-smooth);
   border: 1px solid transparent;
+}
+
+.benefit-card-simple {
+  padding: 1.1rem 1.35rem;
+  align-items: center;
+}
+
+.benefit-card-simple .benefit-title {
+  font-size: 0.98rem;
+  line-height: 1.35;
 }
 
 .benefit-card:hover {
