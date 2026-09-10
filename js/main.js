@@ -271,7 +271,7 @@ function initVideoModal() {
    7. DIRECT WHATSAPP ORDER / INQUIRY LINK GENERATOR
    -------------------------------------------------------------------------- */
 function initWhatsAppButtons() {
-  const waPhone = '6285742001335';
+  const waPhone = '66833684771';
 
   const waButtons = document.querySelectorAll('[data-wa-package]');
   waButtons.forEach(btn => {
